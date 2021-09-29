@@ -1,0 +1,13 @@
+.comment-form-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2% 15%;
+    height: calc(100% - 10vh);
+}
+
+.comment-form{
+    width: 100%;
+}

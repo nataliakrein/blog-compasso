@@ -1,8 +1,46 @@
-body {
+/*:root {
+  --primary-color: #131B23;
+  --secondary-color: #084887;
+  --tertiary-color: #FFBF1F;
+  --white: #F7F5FB;
+  --title: #252422;
+  --details: #a7aeb4;
+  --linear: linear-gradient(175deg, #bbb8db 0, #9496ce 25%, #6476c1 50%, #0a59b4 75%, #0040a8 100%);
+}*/
+:root {
+  --linear: linear-gradient(to right, #9d50bb, #6e48aa);
+  --white: #F7F5FB;
+  --title-post: #9d50bb;
+  --date-post: #313131;
+  --text-post: #6b6b6b;
+}
+
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 400;
+  /*color: var(--white);*/
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  /*background-color: var(--white);
+  font-family: 'Quicksand', sans-serif;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

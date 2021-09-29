@@ -1,0 +1,30 @@
+.navbar {
+    height: 10vh;
+    width: 100%;
+    background: var(--linear);
+    display: flex;
+    padding: 0% 15%;
+    color: var(--white);
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.navbar_title {
+    font-weight: 700;
+    width: 10%;
+}
+
+.navbar_nav{
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: flex-end;
+}
+
+.navbar_items{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
