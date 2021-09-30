@@ -4,20 +4,20 @@ import { Card, CardFooter, CardHeader, Button, CardBody, Text, Heading, Box } fr
 import { Edit, Trash, Like, Dislike, Chat } from 'grommet-icons';
 //height: small
 //truncate="true"
-export const Post = () =>{
+export const Post = ({title, date, body, votes, comments, author}) =>{
   return (
     <div className="post">
         <Card height={{min: '30vh', max: '100%'}} width="100%" background="light-1" basis="auto">
             <CardHeader direction="column" align="start" pad="medium" gap="xsmall">
                 <Box direction="row" alignContent="center" fill="horizontal" justify="between">
-                    <Heading size="small" color="var(--title-post)" level="4">Learn Redux in 10 minutes!</Heading>
-                    <Button primary size="xsmall" label="0"/>
+                    <Heading size="small" color="var(--title-post)" level="4">{title}</Heading>
+                    <Button primary size="xsmall" label={votes}/>
                 </Box>
-                <Text color="var(--date-post)" size="small">5 years ago  by <Text size="small" weight="bold">thingone</Text></Text>
+                <Text color="var(--date-post)" size="small">{date}  by <Text size="small" weight="bold">{author}</Text></Text>
             </CardHeader>
             <CardBody height="small" pad={{top: "none",
                             horizontal: "medium"}}>
-                <Text color="var(--text-post)" truncate="true" size="small">Just kidding. It takes more than 10 minutes to learn technology.Just kidding. It takes more than 10 minutes to learn technology.Just kidding. It takes more than 10 minutes to learn technology.Just kidding. It takes more than 10 minutes to learn technology.</Text>
+                <Text color="var(--text-post)" truncate="true" size="small">{body}</Text>
             </CardBody>
             <CardFooter justify="evenly" pad={{horizontal: "small"}} background="light-2">
                 <Button tip="Edit"
@@ -42,7 +42,7 @@ export const Post = () =>{
                     icon={<Chat color="grey" />}
                     hoverIndicator 
                     />
-                    <Text color="var(--text-post)">0</Text>
+                    <Text color="var(--text-post)">{comments}</Text>
                 </Box>
             </CardFooter>
         </Card>
