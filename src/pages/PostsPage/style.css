@@ -1,6 +1,6 @@
-.comment-list {
+.posts-page {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     flex-direction: column;
     width: 100%;

@@ -2,15 +2,16 @@ import React from 'react';
 import './style.css';
 import { Card, CardFooter, CardHeader, Button, CardBody, Text, Heading, Box } from 'grommet';
 import { Edit, Trash, Like, Dislike, Chat } from 'grommet-icons';
-
+//height: small
+//truncate="true"
 export const Post = () =>{
   return (
     <div className="post">
-        <Card height="small" width="100%" background="light-1" basis="auto">
+        <Card height={{min: '30vh', max: '100%'}} width="100%" background="light-1" basis="auto">
             <CardHeader direction="column" align="start" pad="medium" gap="xsmall">
                 <Box direction="row" alignContent="center" fill="horizontal" justify="between">
                     <Heading size="small" color="var(--title-post)" level="4">Learn Redux in 10 minutes!</Heading>
-                    <Button background-color="var(--title-post)" size="xsmall" label="0"/>
+                    <Button primary size="xsmall" label="0"/>
                 </Box>
                 <Text color="var(--date-post)" size="small">5 years ago  by <Text size="small" weight="bold">thingone</Text></Text>
             </CardHeader>
@@ -20,6 +21,7 @@ export const Post = () =>{
             </CardBody>
             <CardFooter justify="evenly" pad={{horizontal: "small"}} background="light-2">
                 <Button tip="Edit"
+                nameContainer="Edit Post"
                 icon={<Edit color="grey" />}
                 hoverIndicator
                 />
