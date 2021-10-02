@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllPosts, sortByTime, sortByVotes, votePost, deletePost } from '../../actions'
-import { Link } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import './style.css';
 import { Select, Button, Box } from 'grommet';
 import { Post } from '../../components';
@@ -13,32 +13,37 @@ export const getDate = (timestamp) => {
 }
 
 export const PostsPage = (props) =>{
+  const history = useHistory();
   const [option, setOption] = useState('')
   const [postsArray, setPostsArray] = useState([])
   const [applySort, setApplySort] = useState(false)
   const dispatch = useDispatch();
-  const posts = useSelector(state => state.posts)
+  const Posts = useSelector(state => state.posts)
 
   useEffect(() => {
     const fetchPosts = async () => {
       !applySort && await dispatch(getAllPosts((props.match.params.category)), [])
-      await setPostsArray(posts)
+      await setPostsArray(Posts)
     }
     fetchPosts()
   }, [props.match.params.category])
 
   const sortBy = (option) => {
-    let sortedPosts = posts.slice()
+    let sortedPosts = Posts.slice()
     option === 'votes' ? dispatch(sortByVotes(sortedPosts)) : dispatch(sortByTime(sortedPosts))
     setApplySort(true)
   }
 
-  const vote = async (id, option) => {
+  /*const vote = async (id, option) => {
     await dispatch(votePost(id, option))
   }
 
   const delete_post = (id) => {
     dispatch(deletePost(id))
+  }*/
+
+  const handleNewPost = () => {
+    history.push('/posts/new');
   }
 
   return (
@@ -51,18 +56,20 @@ export const PostsPage = (props) =>{
                 value={option}
                 onChange={() => sortBy()}
                 />
-            <Button primary label="New Post" nameContainer="New Post"/>
+            <Button primary label="New Post" nameContainer="New Post" onClick={handleNewPost}/>
           </Box>
             <Box direction="column" width="100%" justify="evenly">
-                {posts && posts.map((post, index) => (
+                {Posts && Posts.map((post, index) => (
                   <Post 
                     key={post.id}
+                    id={post.id}
                     title={post.title}
                     date={getDate(post.timestamp)} 
                     body={post.body}
                     votes={post.voteScore}
                     comments={post.commentCount}
                     author={post.author}
+                    category={post.category}
                   />
                 ))}
             </Box>

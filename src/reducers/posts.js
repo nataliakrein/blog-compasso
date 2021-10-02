@@ -1,5 +1,4 @@
 import { GET_POSTS, SORT_BY_VOTES, SORT_BY_TIME, UPDATE_POST, DELETE_POST, CREATE_POST } from '../actions/constants'
-
 export const posts = (state = [], action) => {
     switch (action.type) {
         case GET_POSTS:

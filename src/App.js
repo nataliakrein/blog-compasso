@@ -5,8 +5,9 @@ import { createStore } from 'redux';
 import reducer from './reducers';
 import store from './redux/store'
 
-import { NavBar, PostForm, Post } from './components';
+import { NavBar, PostForm, Post, CommentForm } from './components';
 import { PostsPage } from './pages/PostsPage';
+import { PostDetailPage, PostEditPage } from './pages';
 
 /*
  constructor(props) {
@@ -25,9 +26,10 @@ function App() {
           <Switch>
             <Route exact path="/" component={PostsPage} />
             <Route exact path="/:category" component={PostsPage} />
+            <Route exact path="/:category/:id/comments/new" component={CommentForm} />
             <Route exact path="/posts/new" component={PostForm} />
-            <Route exact path="/:category/:id" component={Post} />
-            <Route exact path="/:category/:id/edit" component={PostForm} /> {/*EditForm??? */}
+            <Route exact path="/:category/:id" component={PostDetailPage} />
+            <Route exact path="/:category/:id/edit" component={PostEditPage} /> {/*EditForm??? posto form???*/}
           </Switch>
         </BrowserRouter>
       </Provider>
