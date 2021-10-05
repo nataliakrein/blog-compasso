@@ -6,6 +6,8 @@ import './style.css';
 import { Select, Button, Box } from 'grommet';
 import { Post } from '../../components';
 import * as moment from 'moment'
+import { useParams } from 'react-router-dom'
+
 
 export const getDate = (timestamp) => {
   const date = moment(timestamp)._d.toString().split(' ')
@@ -13,39 +15,30 @@ export const getDate = (timestamp) => {
 }
 
 export const PostsPage = (props) =>{
+  const { category } = useParams()
   const history = useHistory();
   const [option, setOption] = useState('')
   const [postsArray, setPostsArray] = useState([])
   const [applySort, setApplySort] = useState(false)
   const dispatch = useDispatch();
   const Posts = useSelector(state => state.posts)
-
+  console.log(Posts)
   useEffect(() => {
     const fetchPosts = async () => {
-      !applySort && await dispatch(getAllPosts((props.match.params.category)), [])
+      !applySort && await dispatch(getAllPosts((category)), []) //props.match.params.category
       await setPostsArray(Posts)
     }
     fetchPosts()
-  }, [props.match.params.category])
+  }, [category])
 
   const sortBy = (option) => {
     let sortedPosts = Posts.slice()
-    option === 'votes' ? dispatch(sortByVotes(sortedPosts)) : dispatch(sortByTime(sortedPosts))
-    setApplySort(true)
+    option = option.target.value
+    option === 'Vote Score' ? dispatch(sortByVotes(sortedPosts)) : dispatch(sortByTime(sortedPosts))
+    //votes
+    //setApplySort(true)
   }
-
-  /*const vote = async (id, option) => {
-    await dispatch(votePost(id, option))
-  }
-
-  const delete_post = (id) => {
-    dispatch(deletePost(id))
-  }*/
-
-  const handleNewPost = () => {
-    history.push('/posts/new');
-  }
-
+  
   return (
       <div className="posts-page">
           <Box direction="row" width="100%" align="stretch" justify="evenly">
@@ -54,9 +47,9 @@ export const PostsPage = (props) =>{
                 placeholder="Sort by..."
                 options={['Vote Score', 'Date and Time']}
                 value={option}
-                onChange={() => sortBy()}
+                onChange={(option) => sortBy(option)}
                 />
-            <Button primary label="New Post" nameContainer="New Post" onClick={handleNewPost}/>
+            <Button primary label="New Post" nameContainer="New Post" onClick={() => history.push('/posts/new')}/>
           </Box>
             <Box direction="column" width="100%" justify="evenly">
                 {Posts && Posts.map((post, index) => (

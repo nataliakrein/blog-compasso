@@ -40,7 +40,7 @@ export const Post = ({title, date, body, votes, comments, author, category, id})
                     nameContainer="Edit Post"
                     icon={<Edit color="grey" />}
                     hoverIndicator 
-                    onClick={() => history.push(`/${category}/${id}/edit`)} //ver isso aqui
+                    onClick={() => history.push(`/${category}/${id}/edit/`)} //ver isso aqui
                 />
                 <Button tip="Delete"
                     icon={<Trash color="grey" />}

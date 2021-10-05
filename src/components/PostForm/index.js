@@ -11,6 +11,7 @@ export const PostForm = (props) =>{
     const history = useHistory();
     const dispatch = useDispatch()
     const categories = useSelector(state => state.categories)
+
     useEffect(() => {
         dispatch(getCategories())
     }, [])
@@ -25,7 +26,7 @@ export const PostForm = (props) =>{
             title: e.target.title.value,
             body: e.target.body.value,
             author: e.target.author.value,
-            category: e.target.category.value
+            category: e.target.category.value,
         }))
         props.history.replace('/')
     }
@@ -53,11 +54,11 @@ export const PostForm = (props) =>{
             <TextInput type="text" required id="author" name="author" />
         </FormField>
         <FormField htmlFor="category" label="Category">
-            <Select required 
+            <Select 
+            required 
             name="category"
-            options={['React', 'Redux', 'Compasso']} 
-            /*value={value}
-            onChange={({ option }) => setValue(option)}*/
+            //options={[categories[0].name, categories[1].name, categories[2].name]} 
+            options={['react', 'redux', 'compasso']} 
             />
         </FormField>
         <Box className="button-submit" cldirection="row" gap="medium">

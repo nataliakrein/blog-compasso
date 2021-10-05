@@ -1,26 +1,29 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './style.css';
 import { ButtonSubmit, PostForm } from '../../components';
 import { getAllPosts, getCategories, editPost } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, TextInput, Heading, FormField, Select, TextArea, Button, Box } from 'grommet';
+import { useParams } from 'react-router-dom'
 
 export const PostEditPage = (props) =>{
+    const { category, id } = useParams()
     const dispatch = useDispatch()
     const posts = useSelector(state => state.posts)
     const categories = useSelector(state => state.categories)
-
-    React.useEffect(() => {
+    //props.match.params.category
+    useEffect(() => {
         const init = async () => {
             await dispatch(getCategories())
-            posts.length === 0 && await dispatch(getAllPosts(props.match.params.category), [])
+            posts.length === 0 && await dispatch(getAllPosts(category), [])
         }
         init()
-    }, [props.match.params.category])
+    }, [category])
 
+    //props.match.params.id
     const editForm = async (e) => {
         e.preventDefault()
-        await dispatch(editPost(props.match.params.id, {
+        await dispatch(editPost(id, {
             title: e.target.title.value,
             body: e.target.body.value,
         }))

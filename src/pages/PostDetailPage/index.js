@@ -10,21 +10,20 @@ import { Edit, Trash, Like, Dislike, Chat } from 'grommet-icons';
 import { withRouter } from 'react-router-dom'
 import { generateId } from '../../utils'
 import { getDate } from '../PostsPage'
+import { useParams } from 'react-router-dom'
 
 //import { Card, CardFooter, CardHeader, Button, CardBody, Text, Heading, Box } from 'grommet';
 //import { Edit, Trash, Like, Dislike, Chat } from 'grommet-icons';
 
 export const PostDetailPage = (props) => {
+    const { id } = useParams()
     const history = useHistory();
-    //const [commentBox, setCommentBox] = useState(false)
     const posts = useSelector(state => state.posts)
-    //const comments = useSelector(state => state.comments)
-
     const dispatch = useDispatch()
     React.useEffect(() => {
         const fetchPost = async () => {
             posts.length === 0 && await dispatch(getAllPosts()) //fetch posts only when user enters the id through url
-            await dispatch(getAllComments(props.match.params.id))
+            await dispatch(getAllComments(id)) //props.match.params.id
         }
         fetchPost()
     }, [])
@@ -40,42 +39,11 @@ export const PostDetailPage = (props) => {
     }
 
 
-    if (posts.filter(post => post.id === props.match.params.id).length === 0)
+    /*if (posts.filter(post => post.id === props.match.params.id).length === 0)
         return <div>
             Post not found
-        </div> 
+        </div>*/
 
-    /*const comment = (e) => {
-        e.preventDefault()
-        const id = generateId()
-        const timestamp = Date.now()
-        dispatch(addComment({
-            id,
-            parentId: match.params.id,
-            timestamp,
-            body: e.target.body.value,
-            author: e.target.author.value,
-        }))
-        e.target.body.value = ''
-        e.target.author.value = ''
-    }*/
-
-    /*const vote_comment = (id, option) => {
-        dispatch(voteComment(id, option))
-    }
-
-    const delete_comment = (id) => {
-        dispatch(deleteComment(id))
-    }
-
-    const edit_comment = async (id, e) => {
-        e.preventDefault()
-        await dispatch(updateComment(id, {
-            timestamp: Date.now(),
-            body: e.target.edit.value
-        }))
-        props.history.go(0)
-    }*/
   return (
       <div>
         {posts && posts.map(post => post.id === match.params.id && (
@@ -84,7 +52,7 @@ export const PostDetailPage = (props) => {
               <CardHeader direction="column" align="start" pad="medium" gap="xsmall">
                   <Box direction="row" alignContent="center" fill="horizontal" justify="between">
                       <Heading size="small" color="var(--title-post)" level="4">{post.title}</Heading>
-                      <Button primary size="xsmall" label={post.votes}/>
+                      <Button primary size="xsmall" label={post.voteScore}/>
                   </Box>
                   <Text color="var(--date-post)" size="small">{getDate(post.timestamp)}  by <Text size="small" weight="bold">{post.author}</Text></Text>
               </CardHeader>
@@ -126,7 +94,7 @@ export const PostDetailPage = (props) => {
           </Card>
         </div>
         ))}
-          <CommentList id={posts.map(post => post.id === match.params.id)}/>
+          <CommentList id={posts.map(post => post.id === id)}/> {/*match.params.id*/}
       </div>
   )
 }
