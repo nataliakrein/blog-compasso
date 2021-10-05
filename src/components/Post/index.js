@@ -27,7 +27,7 @@ export const Post = ({title, date, body, votes, comments, author, category, id})
             <CardHeader direction="column" align="start" pad="medium" gap="xsmall">
                 <Box direction="row" alignContent="center" fill="horizontal" justify="between">
                     <Heading size="small" color="var(--title-post)" level="4"><Link to={`/${category}/${id}`}>{title}</Link></Heading>
-                    <Button primary size="xsmall" label={votes}/>
+                    <Button primary size="xsmall" label={(votes === 0) ? '0' : votes}/>
                 </Box>
                 <Text color="var(--date-post)" size="small">{date}  by <Text size="small" weight="bold">{author}</Text></Text>
             </CardHeader>

@@ -5,8 +5,10 @@ import { getAllPosts, getCategories, editPost } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, TextInput, Heading, FormField, Select, TextArea, Button, Box } from 'grommet';
 import { useParams } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 export const PostEditPage = (props) =>{
+    const history = useHistory();
     const { category, id } = useParams()
     const dispatch = useDispatch()
     const posts = useSelector(state => state.posts)
@@ -27,7 +29,9 @@ export const PostEditPage = (props) =>{
             title: e.target.title.value,
             body: e.target.body.value,
         }))
-        props.history.replace('/')
+        //props.history.replace('/')
+        //fazer um path aqui: se for igual ao post, mandar pro post...else
+        history.push('/')
     }
   return (
     <div className="post-form-div_edit">
@@ -47,9 +51,8 @@ export const PostEditPage = (props) =>{
         <FormField name="category" htmlFor="category" label="Category">
             <Select disabled
             options={['React', 'Redux', 'Compasso']} 
-            value={post.category} 
-            /*value={value}
-            onChange={({ option }) => setValue(option)}*/
+            value={post.category}
+            placeholder={post.category}
             />
         </FormField>
         <Box className="button-submit" cldirection="row" gap="medium">

@@ -52,7 +52,7 @@ export const PostDetailPage = (props) => {
               <CardHeader direction="column" align="start" pad="medium" gap="xsmall">
                   <Box direction="row" alignContent="center" fill="horizontal" justify="between">
                       <Heading size="small" color="var(--title-post)" level="4">{post.title}</Heading>
-                      <Button primary size="xsmall" label={post.voteScore}/>
+                      <Button primary size="xsmall" label={(post.voteScore === 0) ? '0' : post.voteScore}/>
                   </Box>
                   <Text color="var(--date-post)" size="small">{getDate(post.timestamp)}  by <Text size="small" weight="bold">{post.author}</Text></Text>
               </CardHeader>
