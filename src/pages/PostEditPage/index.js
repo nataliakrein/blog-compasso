@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './style.css';
 import { ButtonSubmit, PostForm } from '../../components';
 import { getAllPosts, getCategories, editPost } from '../../actions'
@@ -9,11 +9,11 @@ import { useHistory, Link } from 'react-router-dom'
 
 export const PostEditPage = (props) =>{
     const history = useHistory();
-    const { category, id } = useParams()
+    const { category, id} = useParams()
     const dispatch = useDispatch()
     const posts = useSelector(state => state.posts)
     const categories = useSelector(state => state.categories)
-    //props.match.params.category
+
     useEffect(() => {
         const init = async () => {
             await dispatch(getCategories())
@@ -22,14 +22,13 @@ export const PostEditPage = (props) =>{
         init()
     }, [category])
 
-    //props.match.params.id
     const editForm = async (e) => {
         e.preventDefault()
         await dispatch(editPost(id, {
             title: e.target.title.value,
             body: e.target.body.value,
         }))
-        //props.history.replace('/')
+
         //fazer um path aqui: se for igual ao post, mandar pro post...else
         history.push('/')
     }
@@ -55,7 +54,7 @@ export const PostEditPage = (props) =>{
             placeholder={post.category}
             />
         </FormField>
-        <Box className="button-submit" cldirection="row" gap="medium">
+        <Box className="button-submit" direction="row" gap="medium">
             <ButtonSubmit/>
         </Box>
         </Form>))}

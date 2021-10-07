@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import reducer from './reducers';
 import store from './redux/store'
 
-import { NavBar, PostForm, Post, CommentForm } from './components';
+import { NavBar, PostForm, Post, CommentForm, CommentFormEdit} from './components';
 import { PostsPage } from './pages/PostsPage';
 import { PostDetailPage, PostEditPage } from './pages';
 
@@ -29,7 +29,8 @@ function App() {
             <Route exact path="/:category/:id/comments/new" component={CommentForm} />
             <Route exact path="/posts/new" component={PostForm} />
             <Route exact path="/:category/:id" component={PostDetailPage} />
-            <Route exact path="/:category/:id/edit" component={PostEditPage} /> {/*EditForm??? posto form???*/}
+            <Route exact path="/:category/:id/edit" component={PostEditPage} /> {/*PostForm*/}
+            <Route exact path="/:category/:id/comments/:cid/edit" component={CommentFormEdit} />
           </Switch>
         </BrowserRouter>
       </Provider>

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getCategories, createPost } from '../../actions'
+import { getCategories, createPost, editPost } from '../../actions'
 import { useHistory, Link } from 'react-router-dom'
 import { generateId } from '../../utils'
 import './style.css';
 import { Form, TextInput, Heading, FormField, Select, TextArea, Button, Box } from 'grommet';
 import { ButtonSubmit } from '..';
+import { useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 export const PostForm = (props) =>{
     const history = useHistory();
@@ -26,14 +28,14 @@ export const PostForm = (props) =>{
             title: e.target.title.value,
             body: e.target.body.value,
             author: e.target.author.value,
-            category: e.target.category.value,
+            category: e.target.category.value
         }))
         //props.history.replace('/')
         history.push('/')
     }
         
   return (
-      <div className="post-form-div">
+       <div className="post-form-div">
         <Heading size="small" color="var(--title-post)" level="3">New Post</Heading>
         <Form className="post-form" onSubmit={addPost}>
             <FormField htmlFor="title" label="Title">
@@ -50,12 +52,8 @@ export const PostForm = (props) =>{
                 required 
                 name="category"
                 options={categories.map((category, index) => (
-                    category.name
+                    category.path
                 ))}
-                //options={['react', 'redux', 'compasso']} 
-                /*options={categories.map((category, index) => (
-                    <option key={index} value={category.name}>{category.name}</option>
-                ))}*/
                 />
             </FormField>
             <Box className="button-submit" cldirection="row" gap="medium">

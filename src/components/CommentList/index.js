@@ -23,10 +23,11 @@ export const CommentList = (props, id) =>{
 }, [])
 
   return (
-    comments && comments.sort((a, b) => b.timestamp - a.timestamp).map(comment => (
+    comments && comments.sort((a, b) => b.timestamp - a.timestamp).map((comment, index) => (
       <Comment 
-        commentBox={commentBox}
-        setCommentBox={setCommentBox}
+        index={index}
+        //commentBox={commentBox}
+        //setCommentBox={setCommentBox}
         comment={comment}
         key={comment.id}
         getDate={getDate}

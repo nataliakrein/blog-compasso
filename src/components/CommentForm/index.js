@@ -24,18 +24,12 @@ export const CommentForm = (props) =>{
         author: e.target.author.value,
     }))
     history.push('/')
-    //e.target.body.value = ''
-    //e.target.author.value = ''
 }
 
   return (
       <div className="comment-form-div">
         <Heading size="small" color="var(--title-post)" level="3">New Comment</Heading>
         <Form className="comment-form" onSubmit={handleNewComment} 
-        /*value={value}
-        onChange={nextValue => setValue(nextValue)}
-        onReset={() => setValue({})}
-        onSubmit={({ value }) => {}}*/
         >
         <FormField name="comment" htmlFor="comment" label="Comment">
             <TextArea type="text" required id="comment" name="comment" />
