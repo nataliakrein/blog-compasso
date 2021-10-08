@@ -36,22 +36,22 @@ export const PostsPage = (props) =>{
     option = option.target.value
     option === 'Vote Score' ? dispatch(sortByVotes(sortedPosts)) : dispatch(sortByTime(sortedPosts))
     //votes
-    //setApplySort(true)
+    //setApplySort(true)justify="evenly"
   }
   
   return (
       <div className="posts-page">
-          <Box direction="row" width="100%" align="stretch" justify="evenly">
-            <Select alignSelf="stretch"
+          <Box direction="row" gap="small" width="100%" height="10vh" align="center" pad="xsmall" justify="evenly">
+            <Select alignSelf="stretch" 
                 a11yTitle="Posts filter"
                 placeholder="Sort by..."
                 options={['Vote Score', 'Date and Time']}
                 value={option}
-                onChange={(option) => sortBy(option)}
+                onChange={(option) => sortBy(option)} 
                 />
-            <Button primary label="New Post" nameContainer="New Post" onClick={() => history.push('/posts/new')}/>
+            <Button primary size="medium" label="New Post" fill="vertical" nameContainer="New Post" onClick={() => history.push('/posts/new')}/>
           </Box>
-            <Box direction="column" width="100%" justify="evenly">
+            <Box gap="small" direction="column" width="100%" fill="horizontal" justify="evenly">
                 {Posts && Posts.map((post, index) => (
                   <Post 
                     key={post.id}

@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import reducer from './reducers';
 import store from './redux/store'
 
-import { NavBar, PostForm, Post, CommentForm, CommentFormEdit} from './components';
+import { NavBar, PostForm, Post, CommentForm, CommentFormEdit, MenuBurguer} from './components';
 import { PostsPage } from './pages/PostsPage';
 import { PostDetailPage, PostEditPage } from './pages';
 
@@ -32,6 +32,7 @@ function App() {
             <Route exact path="/:category/:id/edit" component={PostEditPage} /> {/*PostForm*/}
             <Route exact path="/:category/:id/comments/:cid/edit" component={CommentFormEdit} />
           </Switch>
+          <MenuBurguer className={"menu-hamburguer"}/>
         </BrowserRouter>
       </Provider>
     </div>

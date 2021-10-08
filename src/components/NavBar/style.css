@@ -18,13 +18,25 @@
 .navbar_nav{
     display: flex;
     align-items: center;
-    width: 30%;
+    /*width: 30%;*/
+    /*width: 90%;*/
+    width: 60%;
     justify-content: flex-end;
 }
 
-.navbar_items{
+/*.navbar_items{
     display: flex;
     align-items: center;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-end;
+}
+
+.navbar_item {
+    margin: 0 2%;
+}*/
+
+@media (min-width:320px) and (max-width: 730px) {
+    .navbar_nav {
+        display: none;
+    }
 }

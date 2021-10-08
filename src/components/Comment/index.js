@@ -41,7 +41,7 @@ export const Comment = ({commentBox, comment, setCommentBox, getDate}) =>{
                 <CardHeader direction="column" align="start" pad="medium" gap="xsmall">
                     <Box direction="row" alignContent="center" fill="horizontal" justify="between">
                         <Text color="var(--date-post)" size="small" weight="bold">by <Text size="small">{comment.author}</Text> on {getDate(comment.timestamp)}</Text>
-                        <Button background-color="var(--title-post)" size="xsmall" label={(comment.voteScore === 0) ? '0' : comment.voteScore}/>
+                        <Button background-color="var(--title-post)" size="small" label={(comment.voteScore === 0) ? '0' : comment.voteScore}/>
                     </Box>
                 </CardHeader>
                 <CardBody height="small" pad={{top: "none",

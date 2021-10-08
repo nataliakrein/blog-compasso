@@ -23,19 +23,18 @@ export const Post = ({title, date, body, votes, comments, author, category, id})
 
   return (
     <div className="post">
-        <Card height={{min: '30vh', max: '100%'}} width="100%" background="light-1" basis="auto">
+        <Card height={{min: '30vh', max: '100%'}} width="100%" fill="horizontal" background="light-1" basis="auto">
             <CardHeader direction="column" align="start" pad="medium" gap="xsmall">
-                <Box direction="row" alignContent="center" fill="horizontal" justify="between">
+                <Box gap="small" width="10vh" direction="row" alignContent="center" fill="horizontal" justify="between">
                     <Heading size="small" color="var(--title-post)" level="4"><Link to={`/${category}/${id}`}>{title}</Link></Heading>
-                    <Button primary size="xsmall" label={(votes === 0) ? '0' : votes}/>
+                    <Button fill="vertical" primary size="small" label={(votes === 0) ? '0' : votes}/>
                 </Box>
                 <Text color="var(--date-post)" size="small">{date}  by <Text size="small" weight="bold">{author}</Text></Text>
             </CardHeader>
-            <CardBody height="small" pad={{top: "none",
-                            horizontal: "medium"}}>
-                <Text color="var(--text-post)" truncate="true" size="small">{body}</Text> {/* ver readmore */}
+            <CardBody height="small" pad={{horizontal: "medium"}}>
+                <Text color="var(--text-post)" truncate size="small">{body}</Text> {/* ver readmore e truncate={true} */}
             </CardBody>
-            <CardFooter justify="evenly" pad={{horizontal: "small"}} background="light-2">
+            <CardFooter gap="medium" fill="horizontal" justify="evenly" /*pad={{horizontal: "small"}}*/ background="light-2">
                 <Button tip="Edit"
                     nameContainer="Edit Post"
                     icon={<Edit color="grey" />}
@@ -57,7 +56,7 @@ export const Post = ({title, date, body, votes, comments, author, category, id})
                     hoverIndicator 
                     onClick={() => vote(id, 'downVote')}
                 />
-                <Box direction="row" align="center">
+                <Box gap="xsmall" direction="row" align="center">
                     <Button tip="Add Comment"
                         icon={<Chat color="grey" />}
                         hoverIndicator 

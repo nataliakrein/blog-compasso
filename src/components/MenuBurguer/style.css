@@ -1,0 +1,9 @@
+@media (min-width:320px) and (max-width: 730px) {
+    .menu {
+        width: 100%;
+        display: block;
+        text-align: center;
+        padding: 0px;
+    }
+
+}
