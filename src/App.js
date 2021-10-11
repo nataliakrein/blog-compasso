@@ -29,7 +29,7 @@ function App() {
             <Route exact path="/:category/:id/comments/new" component={CommentForm} />
             <Route exact path="/posts/new" component={PostForm} />
             <Route exact path="/:category/:id" component={PostDetailPage} />
-            <Route exact path="/:category/:id/edit" component={PostEditPage} /> {/*PostForm*/}
+            <Route exact path="/:category/:id/edit" component={PostForm} /> {/*PostEditPage*/}
             <Route exact path="/:category/:id/comments/:cid/edit" component={CommentFormEdit} />
           </Switch>
           <MenuBurguer className={"menu-hamburguer"}/>
