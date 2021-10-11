@@ -12,52 +12,25 @@ export const PostEditPage = (props) =>{
     const { category, id} = useParams()
     const dispatch = useDispatch()
     const posts = useSelector(state => state.posts)
-    const categories = useSelector(state => state.categories)
+    const [post, setPost] = useState({})
 
     useEffect(() => {
-        const init = async () => {
-            await dispatch(getCategories())
-            posts.length === 0 && await dispatch(getAllPosts(category), [])
-        }
-        init()
+        dispatch(getCategories())
+        setPost(posts.find(post => post.id === props.match.params.id))
     }, [category])
 
-    const editForm = async (e) => {
+    const handleOnSubmit = async (e) => {
         e.preventDefault()
         await dispatch(editPost(id, {
             title: e.target.title.value,
             body: e.target.body.value,
         }))
-
-        //fazer um path aqui: se for igual ao post, mandar pro post...else
         history.push('/')
     }
+
   return (
     <div className="post-form-div_edit">
-        <Heading size="small" color="var(--title-post)" level="3">Edit Post</Heading>
-        {posts && posts.map(post => post.id === props.match.params.id &&
-        (<Form className="post-form-edit" key={post.id} onSubmit={editForm}
-        >
-        <FormField name="title" htmlFor="title" label="Title">
-            <TextInput type="text" required id="title" name="title" defaultValue={post.title} />
-        </FormField>
-        <FormField name="body" htmlFor="body" label="Body">
-            <TextArea type="text" required id="body" name="body" defaultValue={post.body}/>
-        </FormField>
-        <FormField name="author" htmlFor="author" label="Author">
-            <TextInput type="text" disabled id="author" name="author" value={post.author} />
-        </FormField>
-        <FormField name="category" htmlFor="category" label="Category">
-            <Select disabled
-            options={['React', 'Redux', 'Compasso']} 
-            value={post.category}
-            placeholder={post.category}
-            />
-        </FormField>
-        <Box className="button-submit" direction="row" gap="medium">
-            <ButtonSubmit/>
-        </Box>
-        </Form>))}
+        <PostForm post={post} handleOnSubmit={handleOnSubmit}/>
     </div>
   )
 }

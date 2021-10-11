@@ -7,16 +7,8 @@ import store from './redux/store'
 
 import { NavBar, PostForm, Post, CommentForm, CommentFormEdit, MenuBurguer} from './components';
 import { PostsPage } from './pages/PostsPage';
-import { PostDetailPage, PostEditPage } from './pages';
+import { NewPostPage, PostDetailPage, PostEditPage } from './pages';
 
-/*
- constructor(props) {
-    super(props);
-    this.state = {
-      backend: "backend-data"
-    };
-  }
-*/
 function App() {
   return (
     <div>
@@ -27,9 +19,9 @@ function App() {
             <Route exact path="/" component={PostsPage} />
             <Route exact path="/:category" component={PostsPage} />
             <Route exact path="/:category/:id/comments/new" component={CommentForm} />
-            <Route exact path="/posts/new" component={PostForm} />
+            <Route exact path="/posts/new" component={NewPostPage} /> {/*PostForm */}
             <Route exact path="/:category/:id" component={PostDetailPage} />
-            <Route exact path="/:category/:id/edit" component={PostForm} /> {/*PostEditPage*/}
+            <Route exact path="/:category/:id/edit" component={PostEditPage} /> {/* NewPostPage PostEditPage  PostForm*/}
             <Route exact path="/:category/:id/comments/:cid/edit" component={CommentFormEdit} />
           </Switch>
           <MenuBurguer className={"menu-hamburguer"}/>
