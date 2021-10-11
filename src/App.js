@@ -7,7 +7,7 @@ import store from './redux/store'
 
 import { NavBar, PostForm, Post, CommentForm, CommentFormEdit, MenuBurguer} from './components';
 import { PostsPage } from './pages/PostsPage';
-import { NewPostPage, PostDetailPage, PostEditPage } from './pages';
+import { EditCommentPage, NewCommentPage, NewPostPage, PostDetailPage, PostEditPage } from './pages';
 
 function App() {
   return (
@@ -18,11 +18,11 @@ function App() {
           <Switch>
             <Route exact path="/" component={PostsPage} />
             <Route exact path="/:category" component={PostsPage} />
-            <Route exact path="/:category/:id/comments/new" component={CommentForm} />
+            <Route exact path="/:category/:id/comments/new" component={NewCommentPage} /> {/* CommentForm */}
             <Route exact path="/posts/new" component={NewPostPage} /> {/*PostForm */}
             <Route exact path="/:category/:id" component={PostDetailPage} />
             <Route exact path="/:category/:id/edit" component={PostEditPage} /> {/* NewPostPage PostEditPage  PostForm*/}
-            <Route exact path="/:category/:id/comments/:cid/edit" component={CommentFormEdit} />
+            <Route exact path="/:category/:id/comments/:cid/edit" component={EditCommentPage} /> {/* CommentFormEdit */}
           </Switch>
           <MenuBurguer className={"menu-hamburguer"}/>
         </BrowserRouter>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CommentList, Post} from '../../components';
 import { useHistory } from "react-router-dom";
 import './style.css';
@@ -12,15 +12,13 @@ import { generateId } from '../../utils'
 import { getDate } from '../PostsPage'
 import { useParams } from 'react-router-dom'
 
-//import { Card, CardFooter, CardHeader, Button, CardBody, Text, Heading, Box } from 'grommet';
-//import { Edit, Trash, Like, Dislike, Chat } from 'grommet-icons';
-
 export const PostDetailPage = (props) => {
     const { id } = useParams()
     const history = useHistory();
     const posts = useSelector(state => state.posts)
     const dispatch = useDispatch()
-    React.useEffect(() => {
+    
+    useEffect(() => {
         const fetchPost = async () => {
             posts.length === 0 && await dispatch(getAllPosts()) //fetch posts only when user enters the id through url
             await dispatch(getAllComments(id)) //props.match.params.id

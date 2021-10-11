@@ -25,16 +25,6 @@ export const Comment = ({commentBox, comment, setCommentBox, getDate}) =>{
         dispatch(deleteComment(id))
     }
 
-    const edit_comment = async (id, e) => {
-        e.preventDefault()
-        await dispatch(updateComment(id, {
-            timestamp: Date.now(),
-            body: e.target.edit.value
-        }))
-        //props.history.go(0)
-        history.go(0)
-    }
-
     return (
         <div className="comment">
             <Card height="small" width="100%" background="light-1" basis="auto">
