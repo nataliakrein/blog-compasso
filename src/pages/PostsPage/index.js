@@ -49,7 +49,7 @@ export const PostsPage = (props) =>{
                 value={option}
                 onChange={(option) => sortBy(option)} 
                 />
-            <Button primary size="medium" label="New Post" fill="vertical" nameContainer="New Post" onClick={() => history.push('/posts/new')}/>
+            <Button primary size="small" label="New Post" fill="vertical" nameContainer="New Post" onClick={() => history.push('/posts/new')}/>
           </Box>
             <Box gap="small" direction="column" width="100%" fill="horizontal" justify="evenly">
                 {Posts && Posts.map((post, index) => (
@@ -58,7 +58,8 @@ export const PostsPage = (props) =>{
                     id={post.id}
                     title={post.title}
                     date={getDate(post.timestamp)} 
-                    body={post.body}
+                    //body={post.body}
+                    body={post.body.length >= 120 ? post.body.substring(0, 120) + "..." : post.body}
                     votes={post.voteScore}
                     comments={post.commentCount}
                     author={post.author}

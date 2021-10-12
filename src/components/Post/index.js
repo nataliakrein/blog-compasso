@@ -6,11 +6,9 @@ import { useHistory } from "react-router-dom";
 import { Edit, Trash, Like, Dislike, Chat } from 'grommet-icons';
 import { Link } from 'react-router-dom'
 import { votePost, deletePost } from '../../actions'
-//height: small
-//truncate="true"
+
 export const Post = ({title, date, body, votes, comments, author, category, id}) =>{
     const history = useHistory();
-
     const dispatch = useDispatch();
 
     const vote = async (id, option) => {
@@ -32,9 +30,10 @@ export const Post = ({title, date, body, votes, comments, author, category, id})
                 <Text color="var(--date-post)" size="small">{date}  by <Text size="small" weight="bold">{author}</Text></Text>
             </CardHeader>
             <CardBody height="small" pad={{horizontal: "medium"}}>
-                <Text color="var(--text-post)" truncate size="small">{body}</Text> {/* ver readmore e truncate={true} */}
+                <Text color="var(--text-post)" size="small">{body}</Text> 
             </CardBody>
-            <CardFooter gap="medium" fill="horizontal" justify="evenly" /*pad={{horizontal: "small"}}*/ background="light-2">
+            {/*gap={medium} */}
+            <CardFooter gap="xsmall" fill="horizontal" justify="evenly" margin={{top: "small"}} background="light-2">
                 <Button tip="Edit"
                     nameContainer="Edit Post"
                     icon={<Edit color="grey" />}
