@@ -16,7 +16,7 @@ export const CommentForm = (props) =>{
         <Form className="comment-form"  key={props.comment.id} onSubmit={cid ? props.handleComment : props.handleComment} 
         >
         <FormField name="comment" htmlFor="comment" label="Comment">
-            <TextArea type="text" required id="comment" name="comment" defaultValue={props.comment.body}/>
+            <TextArea resize="vertical" type="text" required id="comment" name="comment" defaultValue={props.comment.body}/>
         </FormField>
         <FormField name="author" htmlFor="author" label="Author">
             <TextInput type="text" required id="author" name="author" disabled={cid ? true : false} defaultValue={props.comment.author}/>
@@ -26,39 +26,3 @@ export const CommentForm = (props) =>{
       </div>
   )
 }
-
-/*export const CommentForm = (props) =>{
-  const dispatch = useDispatch()
-  const history = useHistory();
-  const { match } = props
-
-  const handleNewComment = (e) => {
-    e.preventDefault()
-    const id = generateId()
-    const timestamp = Date.now()
-    dispatch(addComment({
-        id,
-        parentId: match.params.id,
-        timestamp,
-        body: e.target.comment.value,
-        author: e.target.author.value,
-    }))
-    history.push('/')
-}
-
-  return (
-      <div className="comment-form-div">
-        <Heading size="small" color="var(--title-post)" level="3">New Comment</Heading>
-        <Form className="comment-form" onSubmit={handleNewComment} 
-        >
-        <FormField name="comment" htmlFor="comment" label="Comment">
-            <TextArea type="text" required id="comment" name="comment" />
-        </FormField>
-        <FormField name="author" htmlFor="author" label="Author">
-            <TextInput type="text" required id="author" name="author" />
-        </FormField>
-        <ButtonSubmit/>
-        </Form>
-      </div>
-  )
-}*/

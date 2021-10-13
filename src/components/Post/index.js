@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { Edit, Trash, Like, Dislike, Chat } from 'grommet-icons';
 import { Link } from 'react-router-dom'
 import { votePost, deletePost } from '../../actions'
+import { VotesIcon } from '..';
 
 export const Post = ({title, date, body, votes, comments, author, category, id}) =>{
     const history = useHistory();
@@ -17,15 +18,24 @@ export const Post = ({title, date, body, votes, comments, author, category, id})
 
     const delete_post = (id) => {
         dispatch(deletePost(id))
+        history.push('/')
     }
+    {/* <Button fill="vertical" primary size="small" label={(votes === 0) ? '0' : votes}/> 
+    <Box 
+                        width={{min: '5vh', max: '10vh'}}
+                        pad={{vertical: "1%", horizontal: "2%"}}
+                        size="small" 
+                        className="post-votes">{(votes === 0) ? '0' : votes}</Box>
 
+
+*/}
   return (
     <div className="post">
         <Card height={{min: '30vh', max: '100%'}} width="100%" fill="horizontal" background="light-1" basis="auto">
             <CardHeader direction="column" align="start" pad="medium" gap="xsmall">
-                <Box gap="small" width="10vh" direction="row" alignContent="center" fill="horizontal" justify="between">
+                <Box gap="medium" direction="row" align="center" fill="horizontal" justify="between">
                     <Heading size="small" color="var(--title-post)" level="4"><Link to={`/${category}/${id}`}>{title}</Link></Heading>
-                    <Button fill="vertical" primary size="small" label={(votes === 0) ? '0' : votes}/>
+                    <VotesIcon votes={votes}/>
                 </Box>
                 <Text color="var(--date-post)" size="small">{date}  by <Text size="small" weight="bold">{author}</Text></Text>
             </CardHeader>

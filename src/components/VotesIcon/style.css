@@ -1,0 +1,8 @@
+.votes-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--details);
+    border-radius: 50px;
+    color: var(--white);
+}

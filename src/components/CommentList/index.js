@@ -23,7 +23,10 @@ export const CommentList = (props, id) =>{
 }, [])
 
   return (
-    comments && comments.sort((a, b) => b.timestamp - a.timestamp).map((comment, index) => (
+    <div className="comment-list">
+    <Heading size="small" color="var(--title-post)" level="4">Comments</Heading> 
+    {comments.length !== 0 ? 
+    (comments && comments.sort((a, b) => b.timestamp - a.timestamp).map((comment, index) => (
       <Comment 
         index={index}
         //commentBox={commentBox}
@@ -32,11 +35,10 @@ export const CommentList = (props, id) =>{
         key={comment.id}
         getDate={getDate}
       />
-    ))
+    ))) : (
+      <Text color="var(--text-post)" size="small">There are no comments for now.</Text>
+    )
+    }
+    </div>
     )
   }
-
-    {/*<div className="comment-list">
-        <Heading size="small" color="var(--title-post)" level="5">Comments</Heading>
-        <Text color="var(--text-post)" truncate="true" size="small">There are no comments for now.</Text>
-    </div>*/}

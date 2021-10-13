@@ -28,7 +28,7 @@ export const PostForm = (props) =>{
                 />
             </FormField>
             <FormField htmlFor="body" label="Body">
-                <TextArea type="text" id="body" required name="body" 
+                <TextArea resize="vertical" type="text" id="body" required name="body" 
                 defaultValue={props.post.body}
                 />
             </FormField>
