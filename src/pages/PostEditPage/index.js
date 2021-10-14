@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './style.css';
-import { ButtonSubmit, PostForm } from '../../components';
-import { getAllPosts, getCategories, editPost } from '../../actions'
+import { PostForm } from '../../components';
+import { getCategories, editPost } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { Form, TextInput, Heading, FormField, Select, TextArea, Button, Box } from 'grommet';
 import { useParams } from 'react-router-dom'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 export const PostEditPage = (props) =>{
     const history = useHistory();

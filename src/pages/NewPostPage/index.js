@@ -40,7 +40,7 @@ export const NewPostPage = (props) =>{
       };
 
   return (
-    <div className="post-form-div_edit">
+    <div>
         <PostForm post={post} handleOnSubmit={handleOnSubmit}/>
     </div>
   )

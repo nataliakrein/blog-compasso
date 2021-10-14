@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import './style.css';
-import { Card, CardFooter, CardHeader, Button, CardBody, Text, Heading, Box } from 'grommet';
-import { getAllPosts, getAllComments, votePost, addComment, voteComment, deletePost, deleteComment, updateComment } from '../../actions'
+import { Text, Heading } from 'grommet';
+import { getAllComments } from '../../actions'
 import { getDate } from '../../pages'
 
 import { Comment } from '..';

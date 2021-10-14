@@ -7,13 +7,3 @@
     padding: 2% 0;
     height: calc(100% - 10vh);
 }
-
-/*.post-votes {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--details);
-    border-radius: 50px;
-    color: var(--white);
-    
-}*/

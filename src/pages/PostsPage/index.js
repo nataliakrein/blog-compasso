@@ -25,7 +25,7 @@ export const PostsPage = (props) =>{
   console.log(Posts)
   useEffect(() => {
     const fetchPosts = async () => {
-      !applySort && await dispatch(getAllPosts((category)), []) //props.match.params.category
+      !applySort && await dispatch(getAllPosts((category)), []) 
       await setPostsArray(Posts)
     }
     fetchPosts()
@@ -35,21 +35,23 @@ export const PostsPage = (props) =>{
     let sortedPosts = Posts.slice()
     option = option.target.value
     option === 'Vote Score' ? dispatch(sortByVotes(sortedPosts)) : dispatch(sortByTime(sortedPosts))
-    //votes
-    //setApplySort(true)justify="evenly"
   }
-  
+  //80 e 15, 70
   return (
       <div className="posts-page">
-          <Box direction="row" gap="small" width="100%" height="10vh" align="center" pad="xsmall" justify="evenly">
-            <Select alignSelf="stretch" 
+          <Box direction="row" gap="small" width="100%" height="10vh" align="center" pad="xsmall" justify="between">
+            <Box width="70%">
+            <Select  alignSelf="stretch" 
                 a11yTitle="Posts filter"
                 placeholder="Sort by..."
                 options={['Vote Score', 'Date and Time']}
                 value={option}
                 onChange={(option) => sortBy(option)} 
                 />
-            <Button primary size="small" label="New Post" fill="vertical" nameContainer="New Post" onClick={() => history.push('/posts/new')}/>
+            </Box>
+            <Box width="30%" fill="vertical">
+            <Button justify="center" primary size="small" label="New Post" fill="vertical" nameContainer="New Post" onClick={() => history.push('/posts/new')}/>
+            </Box>
           </Box>
             <Box gap="small" direction="column" width="100%" fill="horizontal" justify="evenly">
                 {Posts && Posts.map((post, index) => (

@@ -18,3 +18,9 @@
     justify-content: flex-end;
     align-items: flex-end;
 }
+
+@media (min-width:300px) and (max-width: 730px) {
+    .post-form-div {
+        padding: 2% 8%;
+    }
+}

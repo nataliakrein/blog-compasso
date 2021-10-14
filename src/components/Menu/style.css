@@ -2,12 +2,10 @@
     display: flex;
     align-items: center;
     width: 100%;
-    /*width: 40%;*/
     justify-content: flex-end;
 }
 
 .menu_item {
-    /*width: 100%;*/
     margin: 0 2%;
 }
 

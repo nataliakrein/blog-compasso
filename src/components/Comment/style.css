@@ -6,3 +6,9 @@
     padding: 1% 15%;
     height: calc(100% - 10vh);
 }
+
+@media (min-width:300px) and (max-width: 730px) {
+    .comment {
+        padding: 1% 8%;
+    }
+}

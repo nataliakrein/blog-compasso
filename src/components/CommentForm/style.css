@@ -4,10 +4,21 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+    margin-top: 2%;
     padding: 2% 15%;
-    height: calc(100% - 10vh);
 }
 
 .comment-form{
+    margin-top: 5%;
     width: 100%;
+}
+
+@media (min-width:300px) and (max-width: 730px) {
+    .comment-form-div {
+        font-size: small;
+    }
+
+    .comment-form-div {
+        padding: 2% 8%;
+    }
 }

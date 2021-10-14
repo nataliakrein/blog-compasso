@@ -1,8 +1,5 @@
-import React, { useEffect } from 'react';
-import { getCategories } from '../../actions';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import './style.css';
-import { NavLink } from 'react-router-dom';
 import { Menu } from '..';
 
 export const NavBar = () =>{
