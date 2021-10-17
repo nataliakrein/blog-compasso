@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardFooter, CardHeader, Button, CardBody, Text, Heading, Box } from 'grommet';
+import { Button } from 'grommet';
 import { Dislike } from 'grommet-icons';
 
 export const DislikeButton = ({dislikeItem}) => {

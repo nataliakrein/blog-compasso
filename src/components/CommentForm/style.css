@@ -13,7 +13,7 @@
     width: 100%;
 }
 
-@media (min-width:300px) and (max-width: 730px) {
+@media (min-width:320px) and (max-width: 730px) {
     .comment-form-div {
         font-size: small;
     }

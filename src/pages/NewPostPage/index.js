@@ -1,17 +1,14 @@
-import React, {useEffect, useState} from 'react';
-//import './style.css';
-import { ButtonSubmit, PostForm } from '../../components';
-import { getCategories, createPost, editPost, getAllPosts } from '../../actions'
-import { useDispatch, useSelector } from 'react-redux'
-import { Form, TextInput, Heading, FormField, Select, TextArea, Button, Box } from 'grommet';
-import { useParams } from 'react-router-dom'
-import { useHistory, Link } from 'react-router-dom'
+import React, {useEffect} from 'react';
+import { PostForm } from '../../components';
+import { getCategories, createPost } from '../../actions'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { generateId } from '../../utils'
 
 export const NewPostPage = (props) =>{
     const history = useHistory();
     const dispatch = useDispatch()
-    const [post, setPost] = useState({
+    const post = ({
         id: '',
         timestamp: '',
         title: '',
@@ -22,7 +19,7 @@ export const NewPostPage = (props) =>{
 
     useEffect(() => {
         dispatch(getCategories())
-    }, [])
+    }, [dispatch])
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();    

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './style.css';
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import { updateComment } from '../../actions'
@@ -7,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import { CommentForm } from '../../components';
 
 export const EditCommentPage = (props) =>{
-    const { cid, category, id } = useParams()
+    const { cid, category } = useParams()
     const history = useHistory();
     const comments = useSelector(state => state.comments)
     const dispatch = useDispatch()
@@ -15,7 +14,7 @@ export const EditCommentPage = (props) =>{
 
     useEffect(() => {
         setComment(comments.find(comment => comment.id === cid))
-    }, [category, comment])
+    }, [category, comment, cid, comments]) //cid e comments
 
     
     const handleCommentEdit = async (e) => { //(id, e
@@ -30,7 +29,7 @@ export const EditCommentPage = (props) =>{
     }
 
   return (
-      <div className="comment-form-div_edit">
+      <div>
         <CommentForm comment={comment} handleComment={handleCommentEdit}/>
       </div>
   )

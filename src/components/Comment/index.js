@@ -7,7 +7,7 @@ import { voteComment, deleteComment } from '../../actions'
 import { LikeButton, VotesIcon, DeleteButton, DislikeButton, EditButton } from '..';
 import { useParams } from 'react-router-dom' 
 
-export const Comment = ({commentBox, comment, setCommentBox, getDate}) =>{
+export const Comment = ({comment, getDate}) =>{
     console.log(comment.id)
     const history = useHistory();
     const dispatch = useDispatch()

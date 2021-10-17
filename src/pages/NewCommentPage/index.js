@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-//import './style.css';
+import React from 'react';
 import { CommentForm } from '../../components';
 import { addComment } from '../../actions'
 import { useDispatch } from 'react-redux'
@@ -10,7 +9,7 @@ export const NewCommentPage = (props) =>{
     const dispatch = useDispatch()
     const history = useHistory();
     const { match } = props
-    const [comment, setComment] = useState({
+    const comment = ({
         id: '',
         timestamp: '',
         parentId: '',

@@ -1,11 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducer from './reducers';
 import store from './redux/store'
-
-import { NavBar, PostForm, Post, CommentForm, CommentFormEdit, MenuBurguer} from './components';
+import { NavBar, MenuBurguer} from './components';
 import { PostsPage } from './pages/PostsPage';
 import { EditCommentPage, NewCommentPage, NewPostPage, PostDetailPage, PostEditPage } from './pages';
 

@@ -10,7 +10,7 @@ export const Menu = ({close}) =>{
   
     useEffect(() => {
       dispatch(getCategories())
-    }, [])
+    }, [dispatch])
   
     return (
         <ul className="menu_items">

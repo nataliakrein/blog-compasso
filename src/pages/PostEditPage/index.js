@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import './style.css';
 import { PostForm } from '../../components';
 import { getCategories, editPost } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,8 +14,8 @@ export const PostEditPage = (props) =>{
 
     useEffect(() => {
         dispatch(getCategories())
-        setPost(posts.find(post => post.id === props.match.params.id))
-    }, [category])
+        setPost(posts.find(post => post.id === id)) //props.match.params.id
+    }, [category, dispatch, posts, id])
 
     const handleOnSubmit = async (e) => {
         e.preventDefault()
@@ -28,7 +27,7 @@ export const PostEditPage = (props) =>{
     }
 
   return (
-    <div className="post-form-div_edit">
+    <div>
         <PostForm post={post} handleOnSubmit={handleOnSubmit}/>
     </div>
   )

@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getCategories, createPost, editPost, getAllPosts } from '../../actions'
-import { useHistory, Link } from 'react-router-dom'
-import { generateId } from '../../utils'
+import { getCategories } from '../../actions'
 import './style.css';
-import { Form, TextInput, Heading, FormField, Select, TextArea, Button, Box } from 'grommet';
+import { Form, TextInput, Heading, FormField, Select, TextArea, Box } from 'grommet';
 import { ButtonSubmit } from '..';
 import { useParams } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
 
 export const PostForm = (props) =>{
     const dispatch = useDispatch();
-    const { category, id} = useParams()
+    const {id} = useParams()
     const categories = useSelector(state => state.categories)
 
     useEffect(() => {
         dispatch(getCategories())
-    }, [props])
+    }, [props, dispatch])
 
   return (
        <div className="post-form-div">
@@ -39,8 +36,7 @@ export const PostForm = (props) =>{
                 />
             </FormField>
             <FormField htmlFor="category" label="Category">
-                <Select 
-                required 
+                <Select  
                 disabled={id ? true : false}
                 name="category"
                 options={categories.map((category, index) => (
