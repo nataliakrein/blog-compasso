@@ -14,7 +14,7 @@ export const PostEditPage = (props) =>{
 
     useEffect(() => {
         dispatch(getCategories())
-        setPost(posts.find(post => post.id === id)) //props.match.params.id
+        setPost(posts.find(post => post.id === id))
     }, [category, dispatch, posts, id])
 
     const handleOnSubmit = async (e) => {

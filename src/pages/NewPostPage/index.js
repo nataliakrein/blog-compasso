@@ -22,7 +22,7 @@ export const NewPostPage = (props) =>{
     }, [dispatch])
 
     const handleOnSubmit = async (e) => {
-        e.preventDefault();    
+            e.preventDefault();    
             const id = generateId()
             const timestamp = Date.now()
             await dispatch(createPost({
