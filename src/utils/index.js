@@ -1,6 +1,7 @@
 const auth = 'd25o04m'
 
-const url = 'http://localhost:3001'
+//const url = 'http://localhost:3001'
+const url = 'https://compasso-blog-api.herokuapp.com'
 
 const getHeaders = {
     method: 'GET',
