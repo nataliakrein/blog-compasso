@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { CommentList, Post} from '../../components';
 import './style.css';
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllPosts, getAllComments } from '../../actions'
+import { getAllComments } from '../../redux/actions/commentActions'
+import { getAllPosts } from '../../redux/actions/postActions'
 import { getDate } from '../PostsPage'
 import { useParams } from 'react-router-dom'
 
@@ -11,7 +12,7 @@ export const PostDetailPage = (props) => {
     const posts = useSelector(state => state.posts)
     const dispatch = useDispatch()
     const [post, setPost] = useState({})
-
+    
     useEffect(() => {
         const fetchPost = async () => {
             posts.length === 0 && await dispatch(getAllPosts()) 
@@ -23,7 +24,7 @@ export const PostDetailPage = (props) => {
 
   return (
       <div>
-        {posts && posts.map(post => post.id === id && ( //match.params.id
+        {posts.map(post => post.id === id && (  //posts &&, com commentlist era a mesma coisa
         <div className="post-detail_div" key={post.id}>
           <Post 
             key={post.id}

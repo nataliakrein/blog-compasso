@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import './style.css';
 import { Text, Heading } from 'grommet';
-import { getAllComments } from '../../actions'
+import { getAllComments } from '../../redux/actions/commentActions'
 import { getDate } from '../../pages'
 
 import { Comment } from '..';
@@ -13,16 +13,17 @@ export const CommentList = (props, id) =>{
 
   React.useEffect(() => {
     const fetchPost = async (id) => {
-        await dispatch(getAllComments(id)) //props.match.params.id
+        await dispatch(getAllComments(id)) 
     }
     fetchPost()
-}, [dispatch])
+  }, [dispatch])
+
 
   return (
     <div className="comment-list">
     <Heading size="small" color="var(--title-post)" level="4">Comments</Heading> 
     {comments.length !== 0 ? 
-    (comments && comments.sort((a, b) => b.timestamp - a.timestamp).map((comment, index) => (
+    (comments.sort((a, b) => b.timestamp - a.timestamp).map((comment, index) => (
       <Comment 
         index={index}
         comment={comment}

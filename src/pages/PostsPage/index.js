@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllPosts, sortByTime, sortByVotes } from '../../actions'
+import { getAllPosts, sortByTime, sortByVotes } from '../../redux/actions/postActions'
 import { useHistory } from 'react-router-dom'
 import './style.css';
 import { Select, Button, Box } from 'grommet';

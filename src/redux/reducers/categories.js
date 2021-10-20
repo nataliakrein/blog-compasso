@@ -1,6 +1,6 @@
 import {
     GET_CATEGORIES,
-} from '../actions/constants'
+} from '../types'
 
 export const categories = (state = [], action) => {
     switch (action.type) {

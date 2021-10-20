@@ -3,7 +3,7 @@ import './style.css';
 import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 import { Card, CardFooter, CardHeader, CardBody, Text, Box } from 'grommet';
-import { voteComment, deleteComment } from '../../actions'
+import { voteComment, deleteComment } from '../../redux/actions/commentActions'
 import { LikeButton, VotesIcon, DeleteButton, DislikeButton, EditButton } from '..';
 import { useParams } from 'react-router-dom' 
 

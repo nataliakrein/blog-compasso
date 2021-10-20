@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
-import { updateComment } from '../../actions'
+import { updateComment } from '../../redux/actions/commentActions'
 import { useParams } from 'react-router-dom'
 import { CommentForm } from '../../components';
 

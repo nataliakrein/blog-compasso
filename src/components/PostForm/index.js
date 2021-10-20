@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getCategories } from '../../actions'
+import { getCategories } from '../../redux/actions/categoryActions'
 import './style.css';
 import { Form, TextInput, Heading, FormField, Select, TextArea, Box } from 'grommet';
 import { ButtonSubmit } from '..';
@@ -22,7 +22,7 @@ export const PostForm = (props) =>{
         <Heading size="small" color="var(--title-post)" level="3">{id ? 'Edit Post' : 'New Post'}</Heading>
         <Form className="post-form" key={props.post.id} onSubmit={id ? props.handleOnSubmit : props.handleOnSubmit}> 
             <FormField htmlFor="title" label="Title" name='title' validate={validateTitle}>
-                <TextInput type="text" id="title" name="title" 
+                <TextInput type="text" id="title" name="title"
                 defaultValue={props.post.title}
                 />
             </FormField>

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { PostForm } from '../../components';
-import { getCategories, editPost } from '../../actions'
+import { editPost } from '../../redux/actions/postActions'
+import { getCategories } from '../../redux/actions/categoryActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'

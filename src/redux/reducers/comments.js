@@ -1,4 +1,4 @@
-import { GET_COMMENTS, ADD_COMMENT, UPDATE_COMMENT, DELETE_COMMENT } from "../actions/constants";
+import { GET_COMMENTS, ADD_COMMENT, UPDATE_COMMENT, DELETE_COMMENT } from '../types';
 
 
 export const comments = (state = [], action) => {

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getCategories } from '../../actions';
+import { getCategories } from '../../redux/actions/categoryActions';
 import { useDispatch, useSelector } from 'react-redux';
 import './style.css';
 import { NavLink } from 'react-router-dom';

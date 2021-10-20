@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import { PostForm } from '../../components';
-import { getCategories, createPost } from '../../actions'
+import { createPost } from '../../redux/actions/postActions'
+import { getCategories } from '../../redux/actions/categoryActions'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { generateId } from '../../utils'
+import { generateId } from '../../service'
 
 export const NewPostPage = (props) =>{
     const history = useHistory();

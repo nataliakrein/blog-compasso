@@ -4,7 +4,7 @@ import { Card, CardFooter, CardHeader, CardBody, Text, Heading, Box } from 'grom
 import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom'
-import { votePost, deletePost } from '../../actions'
+import { votePost, deletePost } from '../../redux/actions/postActions'
 import { VotesIcon, DeleteButton, DislikeButton, EditButton, LikeButton, CommentButton } from '..';
 
 export const Post = ({title, date, body, votes, comments, author, category, id}) =>{

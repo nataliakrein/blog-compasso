@@ -1,9 +1,9 @@
 import React from 'react';
 import { CommentForm } from '../../components';
-import { addComment } from '../../actions'
+import { addComment } from '../../redux/actions/commentActions'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { generateId } from '../../utils'
+import { generateId } from '../../service'
 
 export const NewCommentPage = (props) =>{
     const dispatch = useDispatch()
