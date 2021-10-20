@@ -8,7 +8,7 @@ import { CommentForm } from '../../components';
 export const EditCommentPage = (props) =>{
     const { cid, category } = useParams()
     const history = useHistory();
-    const comments = useSelector(state => state.comments)
+    const comments = useSelector(state => state.commentsReducer.comments)
     const dispatch = useDispatch()
     const [comment, setComment] = useState({})
 

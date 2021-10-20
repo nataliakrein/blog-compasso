@@ -8,7 +8,7 @@ import { getDate } from '../../pages'
 import { Comment } from '..';
 
 export const CommentList = (props, id) =>{
-  const comments = useSelector(state => state.comments)
+  const comments = useSelector(state => state.commentsReducer.comments)
   const dispatch = useDispatch()
 
   React.useEffect(() => {

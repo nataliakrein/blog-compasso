@@ -10,7 +10,7 @@ import { useValidateForm } from '../../hooks';
 export const PostForm = (props) =>{
     const dispatch = useDispatch();
     const {id} = useParams()
-    const categories = useSelector(state => state.categories)
+    const categories = useSelector(state => state.categoriesReducer.categories)
     const { validateAuthor, validateBody, validateCategory, validateTitle } = useValidateForm(props)
 
     useEffect(() => {

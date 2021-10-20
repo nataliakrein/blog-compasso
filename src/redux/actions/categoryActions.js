@@ -10,6 +10,6 @@ import {
 export const getCategories = () => {
     return dispatch => {
         getCategoriesAPI()
-        .then(response => dispatch({type: GET_CATEGORIES, response}))
+        .then(categories => dispatch({type: GET_CATEGORIES, categories}))
     }
 }

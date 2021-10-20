@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom'
 
 export const PostDetailPage = (props) => {
     const { id } = useParams()
-    const posts = useSelector(state => state.posts)
+    const posts = useSelector(state => state.postsReducer.posts)
     const dispatch = useDispatch()
     const [post, setPost] = useState({})
     

@@ -10,7 +10,7 @@ export const PostEditPage = (props) =>{
     const history = useHistory();
     const { category, id} = useParams()
     const dispatch = useDispatch()
-    const posts = useSelector(state => state.posts)
+    const posts = useSelector(state => state.postsReducer.posts)
     const [post, setPost] = useState({})
 
     useEffect(() => {

@@ -18,7 +18,7 @@ export const PostsPage = (props) =>{
   const history = useHistory();
   const option = '';
   const dispatch = useDispatch();
-  const Posts = useSelector(state => state.posts)
+  const Posts = useSelector(state => state.postsReducer.posts)
   console.log(Posts)
 
   useEffect(() => {
