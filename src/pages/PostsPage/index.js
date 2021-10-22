@@ -4,7 +4,7 @@ import { getAllPosts, sortByTime, sortByVotes } from '../../redux/actions/postAc
 import { useHistory } from 'react-router-dom'
 import './style.css';
 import { Select, Button, Box } from 'grommet';
-import { Post } from '../../components';
+import { Loading, Post } from '../../components';
 import * as moment from 'moment'
 import { useParams } from 'react-router-dom'
 
@@ -13,13 +13,13 @@ export const getDate = (timestamp) => {
   return date[0] + ', ' + date[2] + ' ' + date[1] + ' ' + date[3]
 }
 
-export const PostsPage = (props) =>{
+export const PostsPage = () =>{
   const { category } = useParams()
   const history = useHistory();
   const option = '';
   const dispatch = useDispatch();
   const Posts = useSelector(state => state.postsReducer.posts)
-  console.log(Posts)
+  const loading = useSelector(state => state.postsReducer.loading)
 
   useEffect(() => {
     dispatch(getAllPosts((category)), [])
@@ -31,38 +31,37 @@ export const PostsPage = (props) =>{
     option === 'Vote Score' ? dispatch(sortByVotes(sortedPosts)) : dispatch(sortByTime(sortedPosts))
   }
   
-  return (
-      <div className="posts-page">
-          <Box direction="row" gap="small" width="100%" height="10vh" align="center" pad="xsmall" justify="between">
-            <Box width="70%">
-            <Select  alignSelf="stretch" 
-                a11yTitle="Posts filter"
-                placeholder="Sort by..."
-                options={['Vote Score', 'Date and Time']}
-                value={option}
-                onChange={(option) => sortBy(option)} 
-                />
-            </Box>
-            <Box width="30%" fill="vertical">
-            <Button justify="center" primary size="small" label="New Post" fill="vertical" nameContainer="New Post" onClick={() => history.push('/posts/new')}/>
-            </Box>
+  return (loading ? <Loading/> :
+    <div className="posts-page">
+        <Box direction="row" gap="small" width="100%" height="10vh" align="center" pad="xsmall" justify="between">
+          <Box width="70%">
+          <Select  alignSelf="stretch" 
+              a11yTitle="Posts filter"
+              placeholder="Sort by..."
+              options={['Vote Score', 'Date and Time']}
+              value={option}
+              onChange={(option) => sortBy(option)} 
+              />
           </Box>
-            <Box gap="small" direction="column" width="100%" fill="horizontal" justify="evenly">
-                {Posts && Posts.map((post, index) => (
-                  <Post 
-                    key={post.id}
-                    id={post.id}
-                    title={post.title}
-                    date={getDate(post.timestamp)} 
-                    body={post.body.length >= 120 ? post.body.substring(0, 120) + "..." : post.body}
-                    votes={post.voteScore}
-                    comments={post.commentCount}
-                    author={post.author}
-                    category={post.category}
-                  />
-                ))}
-            </Box>
-
-      </div>
-  )
+          <Box width="30%" fill="vertical">
+          <Button justify="center" primary size="small" label="New Post" fill="vertical" nameContainer="New Post" onClick={() => history.push('/posts/new')}/>
+          </Box>
+        </Box>
+          <Box gap="small" direction="column" width="100%" fill="horizontal" justify="evenly">
+              {Posts && Posts.map((post) => (
+                <Post 
+                  key={post.id}
+                  id={post.id}
+                  title={post.title}
+                  date={getDate(post.timestamp)} 
+                  body={post.body.length >= 120 ? post.body.substring(0, 120) + "..." : post.body}
+                  votes={post.voteScore}
+                  comments={post.commentCount}
+                  author={post.author}
+                  category={post.category}
+                />
+              ))}
+          </Box>
+    </div>
+)
 }

@@ -1,25 +1,14 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector} from 'react-redux'
 import './style.css';
 import { Text, Heading } from 'grommet';
-import { getAllComments } from '../../redux/actions/commentActions'
 import { getDate } from '../../pages'
-
 import { Comment } from '..';
 
-export const CommentList = (props, id) =>{
+export const CommentList = () =>{
   const comments = useSelector(state => state.commentsReducer.comments)
-  const dispatch = useDispatch()
-
-  React.useEffect(() => {
-    const fetchPost = async (id) => {
-        await dispatch(getAllComments(id)) 
-    }
-    fetchPost()
-  }, [dispatch])
-
-
-  return (
+  
+  return ((
     <div className="comment-list">
     <Heading size="small" color="var(--title-post)" level="4">Comments</Heading> 
     {comments.length !== 0 ? 
@@ -35,5 +24,5 @@ export const CommentList = (props, id) =>{
     )
     }
     </div>
-    )
+    ))
   }

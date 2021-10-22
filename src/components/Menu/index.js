@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 export const Menu = ({close}) =>{
     const dispatch = useDispatch()
     const categories = useSelector(state => state.categoriesReducer.categories)
+    console.log(categories)
   
     useEffect(() => {
       dispatch(getCategories())

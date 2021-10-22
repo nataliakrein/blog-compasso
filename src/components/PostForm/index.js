@@ -12,12 +12,12 @@ export const PostForm = (props) =>{
     const {id} = useParams()
     const categories = useSelector(state => state.categoriesReducer.categories)
     const { validateAuthor, validateBody, validateCategory, validateTitle } = useValidateForm(props)
-
+    
     useEffect(() => {
         dispatch(getCategories())
     }, [props, dispatch])
 
-  return (
+  return ( 
        <div className="post-form-div">
         <Heading size="small" color="var(--title-post)" level="3">{id ? 'Edit Post' : 'New Post'}</Heading>
         <Form className="post-form" key={props.post.id} onSubmit={id ? props.handleOnSubmit : props.handleOnSubmit}> 

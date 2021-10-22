@@ -15,11 +15,11 @@ function App() {
           <Switch>
             <Route exact path="/" component={PostsPage} />
             <Route exact path="/:category" component={PostsPage} />
-            <Route exact path="/:category/:id/comments/new" component={NewCommentPage} /> {/* CommentForm */}
-            <Route exact path="/posts/new" component={NewPostPage} /> {/*PostForm */}
+            <Route exact path="/:category/:id/comments/new" component={NewCommentPage} /> 
+            <Route exact path="/posts/new" component={NewPostPage} /> 
             <Route exact path="/:category/:id" component={PostDetailPage} />
-            <Route exact path="/:category/:id/edit" component={PostEditPage} /> {/* NewPostPage PostEditPage  PostForm*/}
-            <Route exact path="/:category/:id/comments/:cid/edit" component={EditCommentPage} /> {/* CommentFormEdit */}
+            <Route exact path="/:category/:id/edit" component={PostEditPage} /> 
+            <Route exact path="/:category/:id/comments/:cid/edit" component={EditCommentPage} /> 
           </Switch>
           <MenuBurguer className={"menu-hamburguer"}/>
         </BrowserRouter>

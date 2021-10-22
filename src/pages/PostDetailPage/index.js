@@ -1,30 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { CommentList, Post} from '../../components';
+import React, { useEffect } from 'react';
+import { CommentList, Post, Loading } from '../../components';
 import './style.css';
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllComments } from '../../redux/actions/commentActions'
-import { getAllPosts } from '../../redux/actions/postActions'
 import { getDate } from '../PostsPage'
 import { useParams } from 'react-router-dom'
 
-export const PostDetailPage = (props) => {
+export const PostDetailPage = () => {
     const { id } = useParams()
     const posts = useSelector(state => state.postsReducer.posts)
+    const loading = useSelector(state => state.postsReducer.loading)
+    const loadingComments = useSelector(state => state.commentsReducer.loading)
     const dispatch = useDispatch()
-    const [post, setPost] = useState({})
-    
+
     useEffect(() => {
         const fetchPost = async () => {
-            posts.length === 0 && await dispatch(getAllPosts()) 
             await dispatch(getAllComments(id)) 
-            setPost(posts.find(post => post.id === id))
         }
         fetchPost()
-    }, [dispatch, post, id, posts])
-
-  return (
-      <div>
-        {posts.map(post => post.id === id && (  //posts &&, com commentlist era a mesma coisa
+    }, [dispatch, id])
+    
+    return (
+    loading ? <Loading/> :
+      (<div>
+        {posts.map(post => post.id === id && (  
         <div className="post-detail_div" key={post.id}>
           <Post 
             key={post.id}
@@ -39,7 +38,7 @@ export const PostDetailPage = (props) => {
           />
         </div>
         ))}
-          <CommentList id={posts.map(post => post.id === id)}/> 
-      </div>
+          {loadingComments ? <Loading/> : <CommentList/> }
+      </div>)
   )
 }

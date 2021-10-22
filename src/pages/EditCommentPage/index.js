@@ -14,17 +14,15 @@ export const EditCommentPage = (props) =>{
 
     useEffect(() => {
         setComment(comments.find(comment => comment.id === cid))
-    }, [category, comment, cid, comments]) //cid e comments
+    }, [category, comment, cid, comments]) 
 
     
-    const handleCommentEdit = async (e) => { //(id, e
+    const handleCommentEdit = async (e) => { 
         e.preventDefault()
-        await dispatch(updateComment(cid, { //id
+        await dispatch(updateComment(cid, { 
             timestamp: Date.now(),
             body: e.target.comment.value
         }))
-        //props.history.go(0)
-        //history.go(0)
         history.push('/')
     }
 

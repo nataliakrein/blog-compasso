@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { PostForm } from '../../components';
 import { createPost } from '../../redux/actions/postActions'
-import { getCategories } from '../../redux/actions/categoryActions'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { generateId } from '../../service'
@@ -17,10 +16,6 @@ export const NewPostPage = (props) =>{
         author: '',
         category: '',
     })
-
-    useEffect(() => {
-        dispatch(getCategories())
-    }, [dispatch])
 
     const handleOnSubmit = async (e) => {
             e.preventDefault();    
