@@ -1,13 +1,13 @@
 :root {
   --linear: linear-gradient(to right, #9d50bb, #6e48aa);
-  --white: #F7F5FB;
+  --white: #f7f5fb;
   --title-post: #9d50bb;
   --date-post: #313131;
   --text-post: #6b6b6b;
-  --details: #7D4CDB;
+  --details: #7d4cdb;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -36,10 +36,9 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.menu-hamburguer{
+.menu-hamburguer {
   display: none;
 }

@@ -1,14 +1,14 @@
 .comment {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 1% 15%;
-    height: calc(100% - 10vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1% 15%;
+  height: calc(100% - 10vh);
 }
 
-@media (min-width:320px) and (max-width: 730px) {
-    .comment {
-        padding: 1% 8%;
-    }
+@media (min-width: 320px) and (max-width: 730px) {
+  .comment {
+    padding: 1% 8%;
+  }
 }

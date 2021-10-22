@@ -4,8 +4,7 @@ import { postsReducer } from './postsReducer'
 import { commentsReducer } from './commentsReducer'
 
 export default combineReducers({
-    categoriesReducer,
-    postsReducer,
-    commentsReducer,
+  categoriesReducer,
+  postsReducer,
+  commentsReducer,
 })
-

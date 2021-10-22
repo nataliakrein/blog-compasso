@@ -1,15 +1,9 @@
-import { 
-    GET_CATEGORIES,
-} from '../types'
+import { GET_CATEGORIES } from '../types'
 
-import {
-    getCategoriesAPI,
-} from '../../service'
-
+import { getCategoriesAPI } from '../../service'
 
 export const getCategories = () => {
-    return dispatch => {
-        getCategoriesAPI()
-        .then(categories => dispatch({type: GET_CATEGORIES, categories}))
-    }
+  return (dispatch) => {
+    getCategoriesAPI().then((categories) => dispatch({ type: GET_CATEGORIES, categories }))
+  }
 }
