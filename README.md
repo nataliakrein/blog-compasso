@@ -1,6 +1,6 @@
 # Blog 💻💜
 
-O projeto consiste em um blog que ao consumir uma API, mostra posts sobre diversas categorias. Cada post pertence à uma categoria e pode possuir comentários. O post e os comentários também podem receber votações. A aplicação permite filtrar os posts por categorias e ordenar por data de votação ou data de criação. Também é possível criar novos posts.
+O projeto consiste em um blog que ao consumir uma API, mostra posts sobre diversas categorias. Cada post pertence à uma categoria e pode possuir comentários. O post e os comentários também podem receber votações. A aplicação permite filtrar os posts por categorias e ordenar por data de votação ou data de criação. Também é possível criar novos posts. Para visitar o projeto, <a href="https://myblogproject.netlify.app/">clique aqui</a>
 
 Esse projeto foi realizado com fim avaliativo para o programa de bolsas Front-End ReactJS da Compasso UOL.
 
